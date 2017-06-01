@@ -1,0 +1,306 @@
+@import url('bootstrap1.css');
+@import url('animate.css');
+
+.group:after {
+	display:block;
+	height:0;
+	clear:both;
+	content:".";
+	visibility:hidden; /* For clearing */
+}
+
+/* scroll to top */
+.scrollup{
+    position:fixed;
+	width:32px;
+	height:32px;
+    bottom:20px;
+    right:20px;
+}
+
+a.scrollup {
+	outline:0;
+	text-decoration:none;
+}
+
+a.scrollup:hover,a.scrollup:active,a.scrollup:focus {
+	opacity:1;
+	text-decoration:none;
+	-webkit-transition: all 200ms ease-out 0s;	
+	   -moz-transition: all 200ms ease-out 0s;
+		 -o-transition: all 200ms ease-out 0s;
+		    transition: all 200ms ease-out 0s;
+}
+a.scrollup i:hover {
+	text-decoration:none;
+}
+
+.blankdivider10 {
+	height: 10px;
+	display: block;
+}
+
+.blankdivider20 {
+	height: 20px;
+	display: block;
+}
+.blankdivider30 {
+	height: 30px;
+	display: block;
+}
+
+.row {
+	margin-bottom:10px;
+}
+
+.row .row{
+	margin-bottom:10px;
+}
+
+.row.nomargin {
+	margin-bottom:0;
+}
+
+blockquote {
+	font-size:18px;
+	border:none;
+	padding:0;
+}
+
+blockquote.large {
+	font-size:36px;
+	font-weight:700;
+	line-height:1.1em;
+}
+blockquote.large:before {
+	font-size:64px;
+	font-family: FontAwesome;
+	content: "\f10d";
+	margin-right:20px;
+}
+
+blockquote cite 						{ display:block; font-size:12px;}
+blockquote cite:before 					{ content:"\2014 \0020"; }
+blockquote cite a,
+blockquote cite a:visited,
+blockquote cite a:visited 				{ color:#555; }
+
+ul, ol {
+	font-size: 1em; /* 16px */
+	line-height: 1.5; /* 24px */
+	margin: 0 0 1.5em 0;
+}
+a {
+  color: #454545;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+	text-decoration: underline;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	color: #312f2b;
+	line-height:1.1em;
+	font-family:'Open Sans', Arial, sans-serif;
+}
+h1 {
+	font-size: 36px;
+	margin-bottom:20px;
+}
+h2 {
+	font-size: 30px;
+	margin-bottom:20px;
+}
+h3 {
+	font-size: 26px;
+	margin-bottom:20px;
+}
+h4 {
+	font-size: 22px;
+	margin-bottom:20px;
+}
+h5 {
+	font-size: 18px;
+	margin-bottom:15px;
+}
+h6 {
+	font-size: 16px;
+	margin-bottom:10px;
+}
+strong {
+	font-weight:700;
+	font-family: 'Open Sans', sans-serif;
+}
+small {
+	font-size: 0.75em; /* 12px */
+	line-height: 2; /* 24px */
+	margin-top: 2em;
+	margin-bottom: 0em;
+}
+em {
+	font-style: normal;
+	font-family: 'Open Sans';
+}
+.muted {
+	color: #A5A5A2;
+}
+.impressed {
+	text-shadow:
+ -1px -1px 0 rgba(0, 0, 0, 0.5), /* shadow */  1px 1px 0 rgba(255, 255, 255, 0.9); /* highlight */
+}
+
+h2.pagetitle {
+	color:#fff;
+	font-size:46px;
+}
+
+/* =========================================================
+03. Misc
+============================================================ */
+
+.hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 1em;
+}
+.alignright {
+	text-align: right;
+}
+.alignleft {
+	text-align: left;
+}
+.aligncenter {
+	text-align: center;
+}
+.medium {
+	font-weight: normal;
+}
+
+/* =========================================================
+04. Navigation
+============================================================ */
+
+.navbar-fixed-top .container {
+/* Uncomment to make nav expand full width */
+ /*	width: auto; */
+}
+.navbar .brand {
+	margin-left:0;
+	padding: 0;
+	margin-top: 1.05em;
+}
+.navbar .brand a {
+	padding: 0;
+	color: #fff;
+	font-size: 1.75em;
+	margin-left: 0;
+	font-weight: 400;
+	text-transform:uppercase;
+}
+.navbar .brand a:hover {
+	text-decoration: none;
+ transition: color .15s linear;
+ -webkit-transition: color .15s linear;
+ -moz-transition: color .15s linear;
+}
+.navbar .brand a:focus {
+	outline: none;
+}
+.navbar-inner {
+	min-height: 4.75em;
+}
+.navbar-inverse .navbar-inner {
+	background-repeat: repeat;
+	background-color: #0b333f;
+}
+.navbar-wrapper {
+	overflow:hidden;
+}
+#menu-main {
+	margin-top: 1.125em;
+}
+ul#menu-main > li > a {
+	font-weight: 600;
+	color: #fff;
+	font-size:14px;
+	text-transform:uppercase;
+}
+ul#menu-main > li > a:hover {
+	padding: 9px 15px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+ul#menu-main > li > a:focus {
+	outline:0;
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+	text-shadow: none;
+}
+
+
+/* =========================================================
+05. Page sections
+============================================================ */
+
+/* === section header === */
+
+#header-wrapper {
+	width: 100%;
+	min-height: 600px;
+	margin-top: -120px;
+	padding-top:140px;
+	text-align:center;
+}
+
+
+#header-wrapper h1 {
+	color: #FFFFFF;
+	font-size: 4em;
+	font-weight: 400;
+	margin: 1em 0;
+}
+#header-wrapper h2 {
+	color: #fff;
+	font-family: 'Open Sans', sans serif;
+	font-size: 2em;
+	font-weight: normal;
+	margin: 0.5em 0;
+	text-shadow: 1px 1px 1px #333333;
+}
+
+/* --- Header slider --- */
+#header-wrapper.header-slider {
+	background: #444 url(../img/bg/bg-4.jpg);
+	height: 118%;
+	width: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#main-flexslider ul.slides li p {
+	font-size: 50px;
+	text-transform: uppercase;
+	position: relative;
+	margin-bottom: 0px;
+	text-align: center;
+	line-height: 1;
+	color:#fff;
+}
+#main-flexslider.flexslider {
+	margin:0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+}
+
