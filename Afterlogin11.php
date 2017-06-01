@@ -1,31 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+    session_start();
+    $log11 = $_SESSION['log11'];
+    include("dbcon.php"); 
+ ?>
+<?php
+      if(isset($_COOKIE['$hos']) && $_COOKIE['$hpass']){
+          $curnam1 = $_SESSION['curname'];
+          $curpas1 = $_SESSION['curpass'];
+          $chnpas3 = $_SESSION['chnpas3'];
+          $result = mysql_query("SELECT * FROM tbl1 where password1='$curpas1' or password1='$chnpas3' ");
+          while($row = mysql_fetch_array($result))
+          {
+              $curadr = $row['address'];
+              $cureml = $row['email'];
+	          $curcon = $row['contact'];
+	          $curde1 = $row['department1'];
+	          $curde2 = $row['department2'];
+	          $curde3 = $row['department3'];
+	          $curde4 = $row['department4'];
+           }
+        }
+        else if($log11 == 11)
+        {
+          $curnam = $_SESSION['curname'];
+          $curpas = $_SESSION['curpass'];
+          $chnpas3 = $_SESSION['chnpas3'];
+          $result = mysql_query("SELECT * FROM tbl1 where password1='$curpas1' or password1='$chnpas3' ");
+          while($row = mysql_fetch_array($result))
+          {
+              $curadr = $row['address'];
+              $cureml = $row['email'];
+	          $curcon = $row['contact'];
+	          $curde1 = $row['department1'];
+	          $curde2 = $row['department2'];
+	          $curde3 = $row['department3'];
+	          $curde4 = $row['department4'];
+           }
+        }
+        else 
+        {
+        	echo '<img src="img/e2.jpg" width="100%" height="97%"  />';  /* here goes the page when destroy the cookies */
+          	exit;
+        }
+?>
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>PATIENT INFORMATION SYSTEM</title>
-
-    <link href="css/afterlogin2.css" rel="stylesheet" type="text/css">
-
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="css/afterlogin3.css" rel="stylesheet" />
     <link href="css/afterlogin1.css" rel="stylesheet">
+    <link href="css/afterlogin2.css" rel="stylesheet" type="text/css">
+    <link href="css/afterlogin3.css" rel="stylesheet" />
 	<link href="color/default.css" rel="stylesheet">
 	<link href='css/service1.css' rel='stylesheet' />
     <link href='css/service2.css' rel='stylesheet' />
+    <link href="css/button.css" rel="stylesheet" type="text/css">
+    <link href="css/button1.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/scri.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
     <script src="js/service2.js" type="text/javascript"></script>
 	<script src="js/service1.js" type="text/javascript"></script>
-	<script>
-		function myFunction() {
-		    var answer = confirm ("Please Log in to continue.")
-			if (answer)
-				window.location="index.php"
+    <style>
+		.fa {
+		  padding: 20px;
+		  font-size: 20px;
+		  width: 60px;
+		  text-align: center;
+		  text-decoration: none;
+		  margin: 5px 13px;
+		  border-radius: 50%;
 		}
+		.fa:hover {
+		    opacity: 0.7;
+		}
+		.fa-facebook {
+		  background: #3B5998;
+		  color: white;
+		}
+		.fa-twitter {
+		  background: #55ACEE;
+		  color: white;
+		}
+		.fa-linkedin {
+		  background: #007bb5;
+		  color: white;
+		}
+		.fa-youtube {
+		  background: #bb0000;
+		  color: white;
+		}
+		.fa-yahoo {
+		  background: #430297;
+		  color: white;
+		}
+	</style>
+	<script type="text/javascript">
+	    $().ready(function(){
+	        $('[rel="tooltip"]').tooltip();
+
+	    });
+
+	    function rotateCard(btn){
+	        var $card = $(btn).closest('.card-container1');
+	        console.log($card);
+	        if($card.hasClass('hover')){
+	            $card.removeClass('hover');
+	        } else {
+	            $card.addClass('hover');
+	        }
+	    }
 	</script>
+
+	<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-46172202-4', 'auto');
+		  ga('send', 'pageview');
+	</script>
+
 
 </head>
 
@@ -41,6 +141,38 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
+
+                <a class="navbar-brand" href="index.html">
+                <div id="mySidenav" class="sidenav">
+					  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					  <ul class="nav navbar-nav">
+						  <li class="dropdown">
+						  		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+						  		<ul class="dropdown-menu">
+						  			<li><a href="delete1.php">Delete</a></li>
+						  		</ul>
+						  </li>
+						  <li><a href="event1.php">News and Events</a></li>
+						  <li><a href="doctor1.php">Doctors</a></li>
+					  </ul>
+				</div>
+				<div>
+					<span style="font-size:40px;cursor:pointer;padding-top:-10px" onclick="openNav()">&#9776;MENU</span>
+				</div>
+				<script>
+					function openNav() {
+					    document.getElementById("mySidenav").style.width = "170px";
+					    document.getElementById("main").style.marginLeft = "170px";
+					    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+					}
+
+					function closeNav() {
+					    document.getElementById("mySidenav").style.width = "0";
+					    document.getElementById("main").style.marginLeft= "0";
+					    document.body.style.backgroundColor = "white";
+					}
+				</script>
+                </a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -48,10 +180,9 @@
         <li class="active"><a href="#intro">Home</a></li>
         <li><a href="#about">About</a></li>
 		<li><a href="#service">Service</a></li>
-		<li><a href="index.php">Log in</a></li>
-		<li><a href="#" onclick="myFunction()">Map</a></li>
-		<li><a href="#" onclick="myFunction()">Profile</a></li>
-        <li><a href="#" onclick="myFunction()">Contact</a></li>
+		<li><a href="#profile">Profile</a></li>
+		<li><a href="logout.php">Logout</a></li>
+		<li><a href="#contact">Contact</a></li>
       </ul>
             </div>
             
@@ -60,13 +191,12 @@
     </nav>
 
     <section id="intro" class="intro">
-	
 		<div class="slogan">
 			<h2>WELCOME TO <span class="text_color"></span> </h2>
 			<h2>PATIENT INFORMATION SYSTEM</h2>
 		</div>
 		<div class="page-scroll">
-			<a href="#service" class="btn btn-circle">
+			<a href="#about" class="btn btn-circle">
 				<i class="fa fa-angle-double-down animated"></i>
 			</a>
 		</div>
@@ -74,7 +204,7 @@
 
     <section id="about" class="home-section text-center">
 		<div class="container">
-    <div class="row">
+        <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
          <div class="col-md-4 col-sm-6">
              <div class="card-container">
@@ -135,7 +265,7 @@
                     <div class="back">
                         <div class="content">
                             <div class="main">
-                                <p class="text-center">e-health is an emerging field in the intersection of medical informatics, public health and business, referring to health services and information delivered or enhanced through the Internet and related technologies. In a broader sense, the term characterizes not only a technical development, but also a state-of-mind, a way of thinking, an attitude, and a commitment for networked, global thinking, to improve health care locally, regionally, and worldwide by using information and communication technology.</p>
+                                <p class="text-center">e-health is an emerging field in the intersection of medical informatics, public health and business, referring to health services and information delivered or enhanced through the Internet and related technologies.In a broader sense,the term characterizes not only a technical development, but also a state-of-mind, a way of thinking, an attitude, global thinking, to improve health care locally, regionally, and worldwide by using information and communication technology.</p>
                             </div>
                         </div>
                     </div> 
@@ -318,6 +448,178 @@
 </div> 
 	</section>
 
+	<section id="profile" class="home-section text-center bg-gray">
+<div class="container">
+      <div class="row">
+     
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><?php echo "$curnam1" ?></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Hospital Name</td>
+                        <td><?php echo "$curnam1" ?></td>
+                      </tr>
+                      <tr>
+                        <td>Address</td>
+                        <td><?php echo "$curadr" ?></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:info@support.com"><?php echo "$cureml" ?></a></td>
+                      </tr>  
+                       <tr>
+                        <td>Contact</td>
+                        <td><?php echo "$curcon" ?></td>
+                      </tr>
+                        <tr>
+                        <td>Department</td>
+                        <td><?php echo "$curde1" ?></td>
+                      </tr>
+                      <tr>
+                        <td>Department</td>
+                        <td><?php echo "$curde2" ?></td>
+                      </tr>
+                      <tr>
+                        <td>Department/td>
+                        <td><?php echo "$curde3" ?></td>     
+                      </tr>
+                       <tr>
+                        <td>Department</td>
+                        <td><?php echo "$curde4" ?></td>     
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                   <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+                   	   <?php
+                   	   		$_SESSION['curpas1'] = $curpas1;
+                   	   ?>
+			           <a href="edit1.php">Edit Profile</a>
+			      </div>
+                </div>
+              </div>
+            </div>
+                <div class="panel-footer">
+                        <a href="#" class="fa fa-facebook"></a>
+						<a href="#" class="fa fa-twitter"></a>
+						<a href="#" class="fa fa-linkedin"></a>
+						<a href="#" class="fa fa-youtube"></a>
+						<a href="#" class="fa fa-yahoo"></a>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	</section>
+
+    <section id="contact" class="home-section text-center">
+		<div class="heading-contact">
+			<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<div class="wow bounceInDown" data-wow-delay="0.4s">
+					<div class="section-heading">
+					<h2>Get in touch</h2>
+					<i class="fa fa-2x fa-angle-down"></i>
+
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="container">
+
+		<div class="row">
+			<div class="col-lg-2 col-lg-offset-5">
+				<hr class="marginbot-50">
+			</div>
+		</div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="boxed-grey">
+                
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <form id="contact-form" action="" method="post" role="form" class="contactForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address</label>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Subject</label>
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Message</label>
+                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-skin pull-right" id="btnContactUs">
+                            Send Message</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+		
+		<div class="col-lg-4">
+			<div class="widget-contact">
+				<h5>Main Office</h5>
+				
+				<address>
+				  <strong>Squas Design, Inc.</strong><br>
+				  Tower 795 Folsom Ave, Beautiful Suite 600<br>
+				  San Francisco, CA 94107<br>
+				  <abbr title="Phone">P:</abbr> (123) 456-7890
+				</address>
+
+				<address>
+				  <strong>Email</strong><br>
+				  <a href="mailto:#">email.name@example.com</a>
+				</address>	
+				<address>
+				  <strong>We're on social networks</strong><br>
+                       	<ul class="company-social">
+                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>	
+				</address>					
+			</div>	
+		</div>
+    </div>	
+		</div>
+	</section>
 	<footer>
 		<div class="container">
 			<div class="row">
