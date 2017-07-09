@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Diseases</title>
+	<link rel="icon" type="image/png" href="img/arogya.png" />
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/bootstrap.min1.css" rel="stylesheet">
+	<link rel="shortcut icon" href="img/favicon.png">
+	<link href="css/now.css" rel="stylesheet" />
+    <link href="css/button1.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+		function showHint(str)
+		{
+		if (str.length==0)
+		  {
+		  document.getElementById("txtHint").innerHTML="";
+		  return;
+		  }
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+		    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+		    }
+		  }
+		xmlhttp.open("GET","gethint.php?q="+str,true);
+		xmlhttp.send();
+		}
+	</script>
+</head>
+
+<body>
+	<div class="title" style="padding-left: 30em;padding-top: 1em;">
+		<a href ="afterlogin1.php"><button class="button1"><span>Back to main page</span></button></a>
+    </div>
+    <div class="col-sm-12 text-center">
+			<center>
+				<form class="form-inline search-form">
+					<div class="input-group1">
+						<input type="text" class="form-control1" placeholder="search the web" onkeyup="showHint(this.value)">
+					</div>
+					<span id="txtHint"></span>
+				</form>
+			</center>
+	</div>
+</body>
+
+
+<script src="js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min1.js" type="text/javascript"></script>
+
+</html>

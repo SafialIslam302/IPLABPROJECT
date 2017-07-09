@@ -1,17 +1,21 @@
+<?php
+    session_start();
+    if(empty($_SESSION['curname']) ){
+        header("location:index.php");
+    }
+?>
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=320" name="viewport" />
-    <meta name="MobileOptimized" content="320" />
-
-
-<title>Patient Information Forum</title>
-
-  <link rel="stylesheet" type="text/css" media="all" href="css/event.css">
-  <link href="css/button.css" rel="stylesheet" type="text/css">
-  <link href="css/button1.css" rel="stylesheet" type="text/css">
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="width=320" name="viewport" />
+        <meta name="MobileOptimized" content="320" />
+        <title>Events</title>
+        <link rel="icon" type="image/png" href="img/arogya.png" />
+        <link rel="stylesheet" type="text/css" media="all" href="css/event.css">
+        <link href="css/button.css" rel="stylesheet" type="text/css">
+        <link href="css/button1.css" rel="stylesheet" type="text/css">
+    </head>
 
   <body class="home-page home page page-id-22 page-template page-template-template-home page-template-template-home-php no-js" id="?">
     <div id="wrapper">     

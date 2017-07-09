@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FIRST LOGIN</title>
+    <title>Sign UP</title>
+    <link rel="icon" type="image/png" href="img/arogya.png" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="icon" type="image/png" href="img/arogya.png" />
 	<link rel="stylesheet" type="text/css" href="css/sign1.css" />
+    <link href="css/button.css" rel="stylesheet" type="text/css">
+    <link href="css/button1.css" rel="stylesheet" type="text/css">
 	<link href="css/button2.css" rel="stylesheet" type="text/css">
+    <link href="css/button3.css" rel="stylesheet" type="text/css">
 	<script>
             function ValidateContactForm1()
             {
@@ -80,6 +84,12 @@
                     password2.focus();
                     return false;
                 }
+                if (password1.value != password2.value)
+                {
+                    window.alert("Password don't match.");
+                    password1.focus();
+                    return false;
+                }
                 if (type1.value == "")
                 {
                     window.alert("Please enter your Type.");
@@ -91,7 +101,7 @@
 </head>
 
 <body>
-	  <h1>Sign Up Form.</h1>
+	  <h1>Sign Up Form</h1>
 
 	    <?php
             $con=mysql_connect("localhost","root","");
@@ -115,7 +125,7 @@
 
       
   <form action="create.php" method="post" name="form1" onsubmit="return ValidateContactForm1()">
-	    <h1>Please Fill Up the Sign up Form to Continue Login</h1>
+	    <h1><center>Please Fill Up the Sign up Form to Continue Login</center></h1>
 	    
     <div class="contentform">
 
@@ -182,7 +192,7 @@
 			<br><br>
 			<p>&nbsp&nbsp&nbsp&nbsp&nbsp<span>*</span> Must be filled</p>
 		</div>	
-        <input class="button1" type="submit" name="Submit" value="Submit"></a>
+        <input class="button3" type="submit" name="Submit" value="Submit"></a>
 	
 </form>	
 

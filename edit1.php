@@ -1,14 +1,18 @@
-<?php 
-  session_start();
+<?php
+    session_start();
+    if(empty($_SESSION['curname']) ){
+        header("location:index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FIRST LOGIN</title>
+    <title>Edit Profile</title>
+    <link rel="icon" type="image/png" href="img/arogya.png" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="icon" type="image/png" href="img/arogya.png" />
 	<link rel="stylesheet" type="text/css" href="css/edit1.css" />
-	<link href="css/button2.css" rel="stylesheet" type="text/css">
+	<link href="css/button3.css" rel="stylesheet" type="text/css">
 	<script>
             function ValidateContactForm1()
             {
@@ -280,7 +284,7 @@
 			
 	</div>
 		</div>
-        <input class="button1" type="submit" name="Submit" value="Submit"></a>
+        <input class="button3" type="submit" name="Submit" value="Submit"></a>
 	
 </form>	
 

@@ -1,11 +1,15 @@
 <?php
-        session_start(); 
-        $curnam=$_SESSION['curname'];
+    session_start();
+    if(empty($_SESSION['curname']) ){
+      header("location:index.php");
+    } 
+    $curnam=$_SESSION['curname'];
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Doctor list</title>
+	  <title>Doctor List</title>
+    <link rel="icon" type="image/png" href="img/arogya.png" />
 	<link href="css/doclist.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="js/doclist.js"></script>
     <link href="css/button.css" rel="stylesheet" type="text/css">

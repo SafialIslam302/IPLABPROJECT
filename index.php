@@ -1,10 +1,21 @@
 <?php 
-  session_start();
+     session_start();
+?>
+<?php
+        if(isset($_COOKIE['$email']) && $_COOKIE['$pass']){
+            header("Location:afterlogin1.php");
+            exit;
+        }
+        if(isset($_COOKIE['$hos']) && $_COOKIE['$hpass']){
+            header("Location:afterlogin11.php");
+            exit;
+        } 
 ?>
 <!DOCTYPE HTML>
 <head>
 <meta charset="utf-8">
-<title>Maxim - Modern One Page Bootstrap Template</title>
+<title>LOG IN</title>
+<link rel="icon" type="image/png" href="img/arogya.png" />
 <link href="css/log1.css" rel="stylesheet">
 <link href="css/log2.css" rel="stylesheet" type="text/css">
 <link href="css/bootstrap1.css" rel="stylesheet" type="text/css">
@@ -51,7 +62,6 @@
                     )";
             mysql_query($tbl,$con);
         ?>
-        
 
 		<?php
             $con=mysql_connect("localhost","root","");
@@ -71,15 +81,18 @@
             mysql_query($tbl1,$con);
         ?>
         <?php
-              $myPHPvar1 = $_SESSION['myPHPvar1'];
-              $myPHPvar2 = $_SESSION['myPHPvar2'];
-              $myPHPcre1 = $_SESSION['myPHPcre1'];
-              $myPHPcre2 = $_SESSION['myPHPcre2'];
-              $myPHPvar6 = $_SESSION['myPHPvar6'];
-              $myPHPvar7 = $_SESSION['myPHPvar7'];
+            $myPHPvar1 = $_SESSION['myPHPvar1'];
+            $myPHPvar2 = $_SESSION['myPHPvar2'];
+            $myPHPcre1 = $_SESSION['myPHPcre1'];
+            $myPHPcre2 = $_SESSION['myPHPcre2'];
+            $myPHPvar6 = $_SESSION['myPHPvar6'];
+            $myPHPvar7 = $_SESSION['myPHPvar7'];
+            $nam1 = $_SESSION['nam1'];
+            $pas1 = $_SESSION['pas1'];
+            $nam = $_SESSION['nam'];
+            $pas = $_SESSION['pas'];
         ?>
-        
-		
+        	
 
 <div id="header-wrapper" class="header-slider">
 	<header class="clearfix">
@@ -130,13 +143,15 @@
 		<div align="center">
 			<form class="login" action="log1.php" method="post" name="form3">
 				<p class="title">Log in for Patient/Doctor</p>
-		        <input type="text" placeholder="Email" name="uemail" value="<?php echo $_COOKIE['$email'] ?>"/>
-	    	    <i class="fa fa-user"></i>
-				<input type="password" placeholder="Password" name="upass" value="<?php echo $_COOKIE['$pass'] ?>"/>
+		    <input type="text" placeholder="Email" name="uemail" value="<?php echo $nam ?>"/>
+	    	<i class="fa fa-user"></i>
+				<input type="password" placeholder="Password" name="upass" value="<?php echo $pas ?>"/>
 				<i class="fa fa-key"></i>
-				<input type="checkbox" name="remember" <?php if(isset($_COOKIE["$email"]) and isset($_COOKIE["$pass"])) { ?> checked <?php }?> > <b>Remember Me</b><br>
+				<input type="checkbox" name="remember" <?php if(isset($_COOKIE["$email"]) and isset($_COOKIE["$pass"])) { ?> checked <?php } ?> > 
+				<b>Remember Me</b>
 				<i class="fa fa-key"></i>
 				<a href="sign1.php"><span><h2>SIGN UP</h2></span></a>
+				<a href="forgetpass.php"><span><h2>Forget Password</h2></span></a>
     		<input class="button1" type="submit" value="log in" name="log"></a>
     			<?php
                     if($myPHPvar1  == 10)
@@ -150,7 +165,6 @@
                 ?>
 			</form>
    		</div>
-   		
    	</div>
    	</td>
 
@@ -159,13 +173,14 @@
 		<div align="center">
 			<form class="login" action="log2.php" method="post" name="form4">
 				<p class="title">Log in for hospital</p>
-		        <input type="text" placeholder="Hospital" name="hname" value="<?php echo $_COOKIE['$hos'] ?>"/>
+		        <input type="text" placeholder="Hospital" name="hname" value="<?php echo $nam1 ?>"/>
 	    	    <i class="fa fa-user"></i>
-				<input type="password" placeholder="Password" name="hpass" value="<?php echo $_COOKIE['$hpass'] ?>"/>
+				<input type="password" placeholder="Password" name="hpass" value="<?php echo $pas1 ?>"/>
 				<i class="fa fa-key"></i>
-				<input type="checkbox" name="remember1" <?php if(isset($_COOKIE["$hos"]) and isset($_COOKIE["$hpass"])) { ?> checked <?php }?> > <b>Remember Me</b><br>
+				<input type="checkbox" name="remember1" <?php if(isset($_COOKIE["$hos"]) and isset($_COOKIE["$hpass"])) { ?> checked <?php }?> > <b>Remember Me</b>
 				<i class="fa fa-key"></i>
 				<a href="sign2.php"><span><h2>SIGN UP</h2></span></a>
+				<a href="forgetpass2.php"><span><h2>Forget Password</h2></span></a>
     			<input class="button1" type="submit" value="log in" name="log1"></a>
     			<?php
                     if($myPHPvar2 == 12)
@@ -185,15 +200,14 @@
    	</tr>
    	</table>
     
-	<br><br><br><br>
+	<br><br>
 	<div align="center" id="main-flexslider">
-					<ul class="slides">
-						<li><p>The greatest wealth is Health</p></li>
-						<li><p>Eat Good Feel Good</p></li>
-						<li><p>Take Care of Your Body</p></li>
-					</ul>
-				</div>
-	
+		<ul class="slides">
+			<li><p>The greatest wealth is Health</p></li>
+			<li><p>Eat Good Feel Good</p></li>
+			<li><p>Take Care of Your Body</p></li>
+		</ul>
+	</div>
 	</header>
 
 <script src="js/jquery.js"></script>
@@ -203,6 +217,5 @@
 <script src="js/isotope.js"></script>
 <script src="js/jquery.flexslider.js"></script>
 <script src="js/custom1.js"></script>
-
 </body>
 </html>

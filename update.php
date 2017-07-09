@@ -1,7 +1,10 @@
 <?php
-header("Location:afterlogin1.php");
-session_start();
-include("dbcon.php");
+    header("Location:afterlogin1.php");
+    session_start();
+    include("dbcon.php");
+    if(empty($_SESSION['curname']) ){
+        header("location:index.php");
+    }
 ?>
 <?php
         $pas2 = $_SESSION['curpas2'];

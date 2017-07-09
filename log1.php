@@ -12,8 +12,8 @@
                         if(isset($_POST['remember']))
                         {
                             session_start();
-                            setcookie('$email',$_POST['uemail'],time()+3600);
-                            setcookie('$pass',$_POST['upass'],time()+3600);
+                            setcookie('$email',$_POST['uemail'],time()+60*5);
+                            setcookie('$pass',$_POST['upass'],time()+60*5);
                             $_SESSION['curname']=$eml1;
                             $_SESSION['curpass']=$pas1;
                             header("Location:afterlogin1.php");

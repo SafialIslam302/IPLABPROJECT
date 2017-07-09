@@ -8,9 +8,11 @@
           $curnam1 = $_SESSION['curname'];
           $curpas1 = $_SESSION['curpass'];
           $chnpas3 = $_SESSION['chnpas3'];
-          $result = mysql_query("SELECT * FROM tbl1 where password1='$curpas1' or password1='$chnpas3' ");
+          $cokpas  = $_COOKIE['$hpass'];
+          $result = mysql_query("SELECT * FROM tbl1 where password1='$curpas1' or password1='$chnpas3' or password1='$cokpas' ");
           while($row = mysql_fetch_array($result))
           {
+              $curnam1= $row['hospital'];
               $curadr = $row['address'];
               $cureml = $row['email'];
 	          $curcon = $row['contact'];
@@ -22,8 +24,8 @@
         }
         else if($log11 == 11)
         {
-          $curnam = $_SESSION['curname'];
-          $curpas = $_SESSION['curpass'];
+          $curnam1 = $_SESSION['curname'];
+          $curpas1 = $_SESSION['curpass'];
           $chnpas3 = $_SESSION['chnpas3'];
           $result = mysql_query("SELECT * FROM tbl1 where password1='$curpas1' or password1='$chnpas3' ");
           while($row = mysql_fetch_array($result))
@@ -37,11 +39,15 @@
 	          $curde4 = $row['department4'];
            }
         }
-        else 
+        else
         {
-        	echo '<img src="img/e2.jpg" width="100%" height="97%"  />';  /* here goes the page when destroy the cookies */
-          	exit;
+           echo '<img src="img/e2.jpg" width="100%" height="100%"  />';  /* here goes the page when destroy the cookies */
+           exit;
         }
+?>
+<?php
+    date_default_timezone_set('Asia/Dhaka');
+    include 'comment1.php';
 ?>
 <html>
 
@@ -50,92 +56,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PATIENT INFORMATION SYSTEM</title>
+    <title>Home Page</title>
+    <link rel="icon" type="image/png" href="img/arogya.png" />
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/afterlogin1.css" rel="stylesheet">
     <link href="css/afterlogin2.css" rel="stylesheet" type="text/css">
     <link href="css/afterlogin3.css" rel="stylesheet" />
-	<link href="color/default.css" rel="stylesheet">
-	<link href='css/service1.css' rel='stylesheet' />
+    <link href="color/default.css" rel="stylesheet">
+    <link href='css/service1.css' rel='stylesheet' />
     <link href='css/service2.css' rel='stylesheet' />
     <link href="css/button.css" rel="stylesheet" type="text/css">
     <link href="css/button1.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script type="text/javascript" src="js/scri.js"></script>
+    <link href="css/button2.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css" />
+    <script type="text/javascript" src="js/scri.js"></script>
     <script type="text/javascript" src="js/profile.js"></script>
     <script src="js/service2.js" type="text/javascript"></script>
-	<script src="js/service1.js" type="text/javascript"></script>
+    <script src="js/service1.js" type="text/javascript"></script>
     <style>
-		.fa {
-		  padding: 20px;
-		  font-size: 20px;
-		  width: 60px;
-		  text-align: center;
-		  text-decoration: none;
-		  margin: 5px 13px;
-		  border-radius: 50%;
-		}
-		.fa:hover {
-		    opacity: 0.7;
-		}
-		.fa-facebook {
-		  background: #3B5998;
-		  color: white;
-		}
-		.fa-twitter {
-		  background: #55ACEE;
-		  color: white;
-		}
-		.fa-linkedin {
-		  background: #007bb5;
-		  color: white;
-		}
-		.fa-youtube {
-		  background: #bb0000;
-		  color: white;
-		}
-		.fa-yahoo {
-		  background: #430297;
-		  color: white;
-		}
-	</style>
-	<script type="text/javascript">
-	    $().ready(function(){
-	        $('[rel="tooltip"]').tooltip();
+        .fa {
+          padding: 20px;
+          font-size: 20px;
+          width: 60px;
+          text-align: center;
+          text-decoration: none;
+          margin: 5px 13px;
+          border-radius: 50%;
+        }
+        .fa:hover {
+            opacity: 0.7;
+        }
+        .fa-facebook {
+          background: #3B5998;
+          color: white;
+        }
+        .fa-twitter {
+          background: #55ACEE;
+          color: white;
+        }
+        .fa-linkedin {
+          background: #007bb5;
+          color: white;
+        }
+        .fa-youtube {
+          background: #bb0000;
+          color: white;
+        }
+        .fa-yahoo {
+          background: #430297;
+          color: white;
+        }
+        .fa-skype {
+          background: #00aff0;
+          color: white;
+        }
+        .fa-google {
+          background: #dd4b39;
+          color: white;
+        }
 
-	    });
+    </style>
+    <script type="text/javascript">
+        $().ready(function(){
+            $('[rel="tooltip"]').tooltip();
 
-	    function rotateCard(btn){
-	        var $card = $(btn).closest('.card-container1');
-	        console.log($card);
-	        if($card.hasClass('hover')){
-	            $card.removeClass('hover');
-	        } else {
-	            $card.addClass('hover');
-	        }
-	    }
-	</script>
+        });
 
-	<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        function rotateCard(btn){
+            var $card = $(btn).closest('.card-container1');
+            console.log($card);
+            if($card.hasClass('hover')){
+                $card.removeClass('hover');
+            } else {
+                $card.addClass('hover');
+            }
+        }
+    </script>
 
-		  ga('create', 'UA-46172202-4', 'auto');
-		  ga('send', 'pageview');
-	</script>
+    <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+          ga('create', 'UA-46172202-4', 'auto');
+          ga('send', 'pageview');
+    </script>
+
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 10);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+    <script>
+        function clock() {// We create a new Date object and assign it to a variable called "time".
+        var time = new Date(),
+        // Access the "getHours" method on the Date object with the dot accessor.
+        hours = time.getHours(),
+            
+        // Access the "getMinutes" method with the dot accessor.
+        minutes = time.getMinutes(),
+        seconds = time.getSeconds();
+
+        document.querySelectorAll('.clock')[0].innerHTML = harold(hours) + ":" + harold(minutes) + ":" + harold(seconds);
+          
+        function harold(standIn) 
+        {
+            if (standIn < 10) 
+            {
+              standIn = '0' + standIn
+            }
+            return standIn;
+          }
+        }
+        setInterval(clock, 10);
+    </script>
+    <style>
+        .clock {
+          font-size: 2em;
+          margin-left: 690px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          background-color: #00FFFF;
+        }
+    </style>
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-
-	<div id="preloader">
-	  <div id="load"></div>
-	</div>
-
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="startTime()">
+    <nav  class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -144,52 +206,69 @@
 
                 <a class="navbar-brand" href="index.html">
                 <div id="mySidenav" class="sidenav">
-					  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-					  <ul class="nav navbar-nav">
-						  <li class="dropdown">
-						  		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
-						  		<ul class="dropdown-menu">
-						  			<li><a href="delete1.php">Delete</a></li>
-						  		</ul>
-						  </li>
-						  <li><a href="event1.php">News and Events</a></li>
-						  <li><a href="doctor1.php">Doctors</a></li>
-					  </ul>
-				</div>
-				<div>
-					<span style="font-size:40px;cursor:pointer;padding-top:-10px" onclick="openNav()">&#9776;MENU</span>
-				</div>
-				<script>
-					function openNav() {
-					    document.getElementById("mySidenav").style.width = "170px";
-					    document.getElementById("main").style.marginLeft = "170px";
-					    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-					}
+                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="delete1.php">Delete</a></li>
+                  </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="event1.php">News and Events</a></li>
+                    <li><a href="calender1.php">Personal</a></li>
+                  </ul>
+              </li>
+              <li><a href="doctor1.php">Doctors</a></li>
+              <li><a href="medicine1.php">Medicines</a></li>
+              <li><a href="file1.php">Add Files</a></li>
+            </ul>
+                </div>
+                
+                
 
-					function closeNav() {
-					    document.getElementById("mySidenav").style.width = "0";
-					    document.getElementById("main").style.marginLeft= "0";
-					    document.body.style.backgroundColor = "white";
-					}
-				</script>
+                <!-- <div id="txt"></div>  -->
+
+                <script>
+                    function openNav() 
+                    {
+                        document.getElementById("mySidenav").style.width = "170px";
+                        document.getElementById("main").style.marginLeft = "170px";
+                        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+                    }
+
+                    function closeNav() 
+                    {
+                        document.getElementById("mySidenav").style.width = "0";
+                        document.getElementById("main").style.marginLeft= "0";
+                        document.body.style.backgroundColor = "white";
+                    }
+                </script>
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#intro">Home</a></li>
-        <li><a href="#about">About</a></li>
-		<li><a href="#service">Service</a></li>
-		<li><a href="#profile">Profile</a></li>
-		<li><a href="logout.php">Logout</a></li>
-		<li><a href="#contact">Contact</a></li>
-      </ul>
-            </div>
-            
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <div class="clock"></div>
+            <ul class="nav navbar-nav">
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Service</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#message">Message</a></li>
+                <li><a href="logout.php">Logout</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
 
+        <div>
+            <span style="font-size:40px;cursor:pointer;" onclick="openNav()">&#9776;MENU</span>
+        </div>
+        </div>
     </nav>
 
+    
     <section id="intro" class="intro">
 		<div class="slogan">
 			<h2>WELCOME TO <span class="text_color"></span> </h2>
@@ -202,14 +281,14 @@
 		</div>
     </section>
 
-    <section id="about" class="home-section text-center">
+    <section id="about" class="home-section text-center" style="background-color: #FFFFF0;padding-bottom: 60px;">
 		<div class="container">
         <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
          <div class="col-md-4 col-sm-6">
              <div class="card-container">
                 <div class="card">
-                    <div class="front">
+                    <div class="front" style="background-color: #F4A460;">
                         <div class="cover">
                             <img src="img/cover1.png"/>
                         </div>
@@ -228,7 +307,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="back">
+                    <div class="back" style="background-color: #E0FFFF;">
                         <div class="content">
                             <div class="main">
                                 <p class="text-center"><h4>A patient record is the repository of information about a single patient. This information is generated by health care professionals as a direct result of interaction with a patient or with individuals who have personal knowledge of the patient (or with both). Traditionally, patient records have been paper and have been used to store patient care data.<h4></p>
@@ -242,7 +321,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card-container">
                 <div class="card">
-                    <div class="front">
+                    <div class="front" style="background-color: #FFDAB9;">
                         <div class="cover">
                             <img src="img/cover1.png"/>
                         </div>
@@ -262,7 +341,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="back">
+                    <div class="back" style="background-color: #E0FFFF;">
                         <div class="content">
                             <div class="main">
                                 <p class="text-center">e-health is an emerging field in the intersection of medical informatics, public health and business, referring to health services and information delivered or enhanced through the Internet and related technologies.In a broader sense,the term characterizes not only a technical development, but also a state-of-mind, a way of thinking, an attitude, global thinking, to improve health care locally, regionally, and worldwide by using information and communication technology.</p>
@@ -276,7 +355,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card-container">
                 <div class="card">
-                    <div class="front">
+                    <div class="front" style="background-color: #F4A460;">
                         <div class="cover">
                             <img src="img/cover1.png"/>
                         </div>
@@ -296,7 +375,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="back">
+                    <div class="back" style="background-color: #E0FFFF;">
                         <div class="content">
                             <div class="main">
                                 <p class="text-center">There are steps you can take to recover from a heart attack and preventing another one in the future. This is known as “secondary prevention.” First, make sure you understand your type of heart disease. Your doctor will tell you risk factors and how to help prevent future damage to your heart. Then, follow the tips below for a healthy lifestyle.
@@ -322,7 +401,7 @@
 </div> 
 	</section>
 
-    <section id="service" class="home-section text-center bg-gray">
+    <section id="service" class="home-section text-center bg-gray" style="background-color: #F5FFFA;padding-bottom: 50px;">
 		
 		<div class="container">
     <div class="row">
@@ -330,7 +409,7 @@
          <div class="col-md-4 col-sm-6">
              <div class="card-container">
                 <div class="card">
-                    <div class="front">
+                    <div class="front" style="background-color: #F4A460;">
                         <div class="cover">
                             <img src="img/cover1.png"/>
                         </div>
@@ -350,7 +429,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="back">
+                    <div class="back" style="background-color: #E0FFFF;">
                         <div class="content">
                             <div class="main">
                                 <p class="text-center"><h4>You can save your file in here when ever you need it. You can show it or
@@ -370,7 +449,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card-container">
                 <div class="card">
-                    <div class="front">
+                    <div class="front" style="background-color: #FFDAB9;">
                         <div class="cover">
                             <img src="img/cover1.png"/>
                         </div>
@@ -391,7 +470,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="back">
+                    <div class="back" style="background-color: #E0FFFF;">
                         <div class="header">
                             <h5 class="motto">In this website You can easily find the doctor or a hospital name.</h5>
                         </div>
@@ -409,7 +488,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="card-container">
                 <div class="card">
-                    <div class="front">
+                    <div class="front" style="background-color: #F4A460;">
                         <div class="cover">
                             <img src="img/cover1.png"/>
                         </div>
@@ -429,7 +508,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="back">
+                    <div class="back" style="background-color: #E0FFFF;">
                         <div class="content">
                             <div class="main">
                                 <p class="text-center"><br><br><br><br><br>Here you find all the registered hospital location 
@@ -448,13 +527,10 @@
 </div> 
 	</section>
 
-	<section id="profile" class="home-section text-center bg-gray">
-<div class="container">
+	<section id="profile" class="home-section text-center bg-gray" style="background-color: #AFEEEE;">
+    <div class="container">
       <div class="row">
-     
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-   
-   
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title"><?php echo "$curnam1" ?></h3>
@@ -489,7 +565,7 @@
                         <td><?php echo "$curde2" ?></td>
                       </tr>
                       <tr>
-                        <td>Department/td>
+                        <td>Department</td>
                         <td><?php echo "$curde3" ?></td>     
                       </tr>
                        <tr>
@@ -513,7 +589,7 @@
 						<a href="#" class="fa fa-twitter"></a>
 						<a href="#" class="fa fa-linkedin"></a>
 						<a href="#" class="fa fa-youtube"></a>
-						<a href="#" class="fa fa-yahoo"></a>
+						<a href="#" class="fa fa-skype"></a>
                 </div>
           </div>
         </div>
@@ -521,35 +597,51 @@
     </div>
 	</section>
 
-    <section id="contact" class="home-section text-center">
-		<div class="heading-contact">
-			<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow bounceInDown" data-wow-delay="0.4s">
-					<div class="section-heading">
-					<h2>Get in touch</h2>
-					<i class="fa fa-2x fa-angle-down"></i>
+    <section id="message" class="home-section text-center bg-gray" style="background-color: #E0FFFF;padding-bottom: 40px;">
+    <div class="container">
+      <div class="row">
+     
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                <?php
+                    $con=mysql_connect("localhost","root","");
+                    mysql_query("create database mydata4",$con);
+                    mysql_select_db('mydata4');
+                    $tbl21="create table comments1(
+                            cid int(20) not null AUTO_INCREMENT PRIMARY KEY,
+                            cname varchar(20),
+                            date datetime not null,
+                            message text not null
+                            )";
+                    mysql_query($tbl21,$con);
+                ?>
+               <?php
 
-					</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<div class="container">
+                        //$_SESSION['curful'] = $curful;
 
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="boxed-grey">
-                
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
-                <div id="errormessage"></div>
+                        echo "<form method='POST' action='".setComments($con)."'> 
+                            <input type='hidden' name='cname'>
+                            <input type='hidden' name='date' value=' ".date('Y-m-d H:i:s')."'>
+                            <textarea name='message'></textarea><br>
+                            <input class='button2' type='submit' name='submit' value='submit'>
+                            </form>";
+
+                        echo "<br><br>";
+
+                        getComments($con);
+
+                        echo "<center><a href ='allcomments1.php'><button class='button1'>ALL COMMENTS</button></a></center>";
+                ?>
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+    <section id="contact" class="home-section text-center" style="background-color: #4682B4;">
+    <div class="container">
+        <div class="boxed-grey">
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
                 <form id="contact-form" action="" method="post" role="form" class="contactForm">
                 <div class="row">
                     <div class="col-md-6">
@@ -590,56 +682,16 @@
                 </form>
             </div>
         </div>
-		
-		<div class="col-lg-4">
-			<div class="widget-contact">
-				<h5>Main Office</h5>
-				
-				<address>
-				  <strong>Squas Design, Inc.</strong><br>
-				  Tower 795 Folsom Ave, Beautiful Suite 600<br>
-				  San Francisco, CA 94107<br>
-				  <abbr title="Phone">P:</abbr> (123) 456-7890
-				</address>
-
-				<address>
-				  <strong>Email</strong><br>
-				  <a href="mailto:#">email.name@example.com</a>
-				</address>	
-				<address>
-				  <strong>We're on social networks</strong><br>
-                       	<ul class="company-social">
-                            <li class="social-facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li class="social-twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li class="social-dribble"><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                            <li class="social-google"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                        </ul>	
-				</address>					
-			</div>	
-		</div>
-    </div>	
-		</div>
-	</section>
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-					<div class="wow shake" data-wow-delay="0.4s">
-					<div class="page-scroll marginbot-30">
-						<a href="#intro" id="totop" class="btn btn-circle">
-							<i class="fa fa-angle-double-up animated"></i>
-						</a>
-					</div>
-					</div>
-					<p>&copy;SquadFREE. All rights reserved.</p>
-                    <div class="credits">
-                        
-                        <a href="https://bootstrapmade.com/free-one-page-bootstrap-themes-website-templates/">One Page Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                    </div>
-				</div>
-			</div>	
-		</div>
-	</footer>
+    </section>
+    <footer style="height: 30%;padding-top:10px;padding-bottom: 20px;background-color:#00BFFF;">
+        <div class="container">
+                <a href="#intro" id="totop" class="btn btn-circle">
+                    <i class="fa fa-angle-double-up animated"></i>
+                </a>
+                <p>&copy;CopyRight. SAFIAL ISLAM</p>
+                <a href="mailto:#">safialislam302@gmail.com</a>
+        </div>
+    </footer>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>	
