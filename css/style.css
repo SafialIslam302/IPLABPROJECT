@@ -1,0 +1,291 @@
+html {
+	font-size: 100%;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	font-size: 100%;
+	margin: 0;
+	min-height: 100%;
+	height: 100%;
+	background: #0D0D1A url(../img/index2.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	overflow-x: hidden;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.red {
+	color: #DC4C42;
+}
+
+
+/*-- ================== 1.2 GENERAL BOOTSTRAP RESET ====================== --*/
+
+a {
+	text-decoration: none;
+}
+
+a:focus,
+a:active:focus {
+	outline: 0 none;
+}
+
+ul {
+	padding-left: 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+	outline: 0 none;
+}
+
+input:focus {
+	outline: 0 none;
+	box-shadow: 0 0 0 transparent;
+}
+
+.form-control1 {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	margin-left: 19em;
+	margin-top: 20px;
+}
+
+.form-control1,
+.btn {
+	border-radius: 0;
+}
+
+.form-control1:focus {
+	border-color: #ffffff;
+}
+
+
+/*-- ========================================= --
+	2.0 TYPOGRAPHY
+/*-- ========================================= --*/
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 9em;
+	color: #ffffff;
+	margin-top: 0.1em;
+	margin-bottom: 0;
+	line-height: 1;
+	text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.2em;
+	color: #ffffff;
+	margin-top: 0;
+	margin-bottom: 0.6em;
+	font-weight: 700;
+}
+
+
+/*-- ========================================= --
+	3.0 SPIRIT BUBBLES STYLE
+/*-- ========================================= --*/
+
+.spirit-bubbles {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -1;
+}
+
+
+/*-- ========================================= --
+	4.0 HOME AND RETURN BACK BUTTON
+/*-- ========================================= --*/
+
+ul.return-btn {
+	margin-top: 3em;
+}
+
+ul.return-btn li {
+	display: inline-block;
+	margin-right: 0.5em;
+}
+
+ul.return-btn li a .icons-container {
+	border: 2px solid #ffffff;
+}
+
+ul.return-btn li a {
+	font-family: 'Oswald', sans-serif;
+	color: #ffffff;
+	background: transparent;
+	padding: 0.3em;
+	text-decoration: none;
+	font-weight: 400;
+	border-radius: 2em;
+	width: 12em;
+	display: block;
+	line-height: 2;
+	border: 2px solid #ffffff;
+	margin-bottom: 0.3em;
+}
+
+ul.return-btn li a:hover,
+ul.return-btn li a:active,
+ul.return-btn li a:focus {
+	background: rgba(16, 22, 34, 0.61);
+	-webkit-box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.18), 0 4px 15px 0 rgba(255, 255, 255, 0.15);
+	-moz-box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.18), 0 4px 15px 0 rgba(255, 255, 255, 0.15);
+	box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.18), 0 4px 15px 0 rgba(255, 255, 255, 0.15);
+}
+
+.icons-container {
+	border-radius: 2em;
+	padding: 0.3em;
+	float: right;
+}
+
+.home-icon {
+	background: url(../img/home.png) no-repeat;
+	background: url(../img/home.svg) no-repeat;
+	background-size: contain;
+	height: 1.3em;
+	width: 1.3em;
+	float: right;
+	display: block;
+}
+
+.return-icon {
+	background: url(../img/return.png) no-repeat;
+	background: url(../img/return.svg) no-repeat;
+	background-size: contain;
+	height: 1.3em;
+	width: 1.3em;
+	float: right;
+	display: block;
+}
+
+
+/*-- ========================================= --
+	5.0 SEARCH FORM
+/*-- ========================================= --*/
+.form-control1::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	font-family: 'Oswald', sans-serif;
+	color: #ffffff;
+	opacity: 1;
+	font-weight: lighter;
+}
+
+.search-form .input-group1 .input-group1-btn {
+	font-size: inherit;
+}
+
+.search-form .input-group1 .input-group1-btn:focus {
+	outline: 0 none;
+}
+
+.search-form .input-group1 .input-group1-btn span:focus {
+	outline: 0 none;
+}
+
+.search-form input {
+	background: rgba(255, 255, 255, 0.5);
+	border: 2px solid #fff;
+	border-bottom-left-radius: 2em;
+	border-top-left-radius: 2em;
+	border-bottom-right-radius : 2em;
+	border-top-right-radius: 2em;
+	font-family: 'Oswald', sans-serif;
+	color: #11111D;
+	opacity: 1;
+	font-weight: lighter;
+	font-size: 1.3em;
+	line-height: 1.7;
+	height: inherit;
+	padding-left: 1.5em;
+	width: 100% !important;
+}
+
+.search-form button {
+	background: rgba(255, 255, 255, 0.5);
+	border: 2px solid #fff;
+	margin-left: -6px;
+	border-bottom-right-radius: 2em;
+	border-top-right-radius: 2em;
+	font-size: inherit;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.search-form button .search-icon {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+
+.search-form button:hover .search-icon,
+.search-form button:active .search-icon,
+.search-form button:focus .search-icon {
+	-webkit-transform: rotate(20deg);
+	transform: rotate(20deg);
+}
+
+.search-icon {
+	background: url(../img/search.png) no-repeat;
+	background: url(../img/search.svg) no-repeat;
+	background-size: contain;
+	height: 2.2em;
+	width: 2.2em;
+	display: block;
+}
+
+
+/*-- ================== 7.2 SMALL DEVICES, TABLETS ====================== --*/
+
+@media only screen and (min-width: 768px) {
+	html {
+		height: 100%;
+	}
+	h1 {
+		margin-top: 0.3em;
+		font-size: 13em;
+	}
+	h2 {
+		font-size: 2em;
+		margin-bottom: 1.2em;
+	}
+	.form-inline.search-form .input-group1 {
+		width: 40%;
+	}
+}
